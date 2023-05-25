@@ -1,0 +1,27 @@
+name: Upload
+description: Upload artifact
+inputs:
+  artifact:
+    description: Artifact to upload
+    required: true
+  upload-host:
+    description: Host to upload to
+    required: true
+  upload-path:
+    description: Path on host to upload to
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Upload
+      run: rsync 
+      shell: bash
+    - name:
+      run:
+      shell:
+
+ 
+
+    - name:
+      run:
+      shell:

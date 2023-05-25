@@ -19,10 +19,35 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - name: Read file
+      - name: Load file
         uses: actions/download-artifact@v3
         with:
           name: test-artifact
           path: .
-      - name: cat file
+      - name: Read file
         run: cat test.out
+  build-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build info
+        id: build-info
+        uses: ./.github/actions
+#      - name: Write build info
+#        run: |
+#          echo -e ${{ steps.build-info.outputs.build-info }} > build-info.txt
+      - name: Save build info
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-info
+          path: build-info.txt
+
+        #  upload-artifact:
+        #    needs: setup
+        #    runs-on: ubuntu-latest
+        #    steps:
+        #      - name: Checkout
+        #        uses: actions/checkout@v3
+        #      - name: Upload
+        #        uses: ./.github/actions/upload.yml
