@@ -1,0 +1,13 @@
+name: Build Info
+description: Record build info
+outputs:
+  build-info:
+    description: Build info
+    value: ${{ steps.build-info-builder.outputs.BUILDINFO }}
+runs:
+  using: composite
+  steps:
+    - id: build-info-builder
+      shell: bash
+      run: |
+        ./.github/actions/build-info/build-info.sh "${{ github.workflow }}" "${{ github.run_number }}" > build-info.txt
