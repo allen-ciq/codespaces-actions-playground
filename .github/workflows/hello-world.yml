@@ -34,9 +34,6 @@ jobs:
       - name: Build info
         id: build-info
         uses: ./.github/actions
-#      - name: Write build info
-#        run: |
-#          echo -e ${{ steps.build-info.outputs.build-info }} > build-info.txt
       - name: Save build info
         uses: actions/upload-artifact@v3
         with:
