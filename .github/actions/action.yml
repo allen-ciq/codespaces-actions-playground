@@ -10,7 +10,7 @@ runs:
     - id: build-info-builder
       shell: bash
       run: |
-        echo -e "Source: $(git describe 2> /dev/null || git rev-parse --short HEAD)\nJob: ${{ github.workflow }}\nBuild #: ${{ github.run_number }}\nTime: $(printf '%(%Y-%m-%d %H:%M:%S)T\n')" > build-info.txt
+        ./.github/actions/build-info.sh "${{ github.workflow }}" "${{ github.run_number }}" > build-info.txt
 #        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
 #        echo "BUILDINFO<<$EOF" >> $GITHUB_OUTPUT
 #        echo -e "Source: $(git describe 2> /dev/null || git rev-parse --short HEAD)\nJob: ${{ github.workflow }}\nBuild #: ${{ github.run_number }}\nTime: $(printf '%(%Y-%m-%d %H:%M:%S)T\n')" >> $GITHUB_OUTPUT
