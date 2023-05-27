@@ -26,6 +26,14 @@ jobs:
           path: .
       - name: Read file
         run: cat test.out
+      - name: Test
+        run: |
+          whoami
+          groups
+          pwd
+          mkdir -p ~/.ssh
+          echo supersecretkey > ~/.ssh/id_rsa
+          ls -lah ~/.ssh
   build-info:
     runs-on: ubuntu-latest
     steps:
