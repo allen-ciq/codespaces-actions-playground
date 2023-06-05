@@ -1,6 +1,18 @@
 name: Hello world
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      deploy-branch:
+        description: Branch to upload
+      deploy-host:
+        description: Host to upload to
+        default: connect7.chartiq.com
+        required: true
+      deploy-path:
+        description: Path on remote host to upload to
+        required: true
+  push:
 
 jobs:
   setup:
