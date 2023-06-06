@@ -14,6 +14,9 @@ on:
         required: true
   push:
 
+env:
+  DOW: "$(date '%w')"
+
 jobs:
   setup:
     runs-on: ubuntu-latest
